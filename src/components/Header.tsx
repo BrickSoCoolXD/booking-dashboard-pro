@@ -1,7 +1,7 @@
 import React from 'react';
 import { Bell, User } from 'lucide-react';
 
-export const Header = () => {
+const Header: React.FC = () => {
   return (
     <header className="bg-white shadow-md">
       <div className="container mx-auto px-6 py-4">
@@ -23,3 +23,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;
