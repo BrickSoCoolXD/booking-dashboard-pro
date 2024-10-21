@@ -1,21 +1,28 @@
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from '@/components/ui/sonner';
+import { Layout } from './components/Layout';
+import Dashboard from './pages/Dashboard';
+import UserManagement from './pages/UserManagement';
+import BookingManagement from './pages/BookingManagement';
+import Analytics from './pages/Analytics';
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <BrowserRouter>
+    <Router>
+      <Layout>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/users" element={<UserManagement />} />
+          <Route path="/bookings" element={<BookingManagement />} />
+          <Route path="/analytics" element={<Analytics />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+      </Layout>
+    </Router>
+    <Toaster />
   </QueryClientProvider>
 );
 
